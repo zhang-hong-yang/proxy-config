@@ -1,13 +1,15 @@
 # 规则名称:futu
-# 规则统计:24
 
-DOMAIN-SUFFIX, futunn.com
-DOMAIN-SUFFIX, futunn.hk
-DOMAIN-SUFFIX, futunn.app
-DOMAIN-SUFFIX, futunn.net
-DOMAIN-SUFFIX, futunnapi.com
-DOMAIN-SUFFIX, futunnlog.com
-DOMAIN-SUFFIX, futuhn.com
+DOMAIN-SUFFIX,moomoo.com
+DOMAIN-SUFFIX,futuhn.com
+DOMAIN-SUFFIX,futustatic.com
+DOMAIN-SUFFIX,futunn.com
+DOMAIN-SUFFIX,futunn.hk
+DOMAIN-SUFFIX,futunn.app
+DOMAIN-SUFFIX,futunn.net
+DOMAIN-SUFFIX,futunnapi.com
+DOMAIN-SUFFIX,futunnlog.com
+
 IP-CIDR,118.89.0.0/16,no-resolve
 IP-CIDR,119.28.0.0/16,no-resolve
 IP-CIDR,43.153.0.0/16,no-resolve
