@@ -1,0 +1,56 @@
+# 规则名称:DirectFinance
+# 规则统计:23
+
+# ========================
+# 🏦 银行 / 传统金融（主站 + 登录）
+# ========================
+# HSBC（汇丰）
+DOMAIN-SUFFIX,hsbc.com
+DOMAIN-SUFFIX,hsbc.com.hk
+DOMAIN-SUFFIX,hsbc.co.uk
+DOMAIN-SUFFIX,hsbcprivatebank.com
+DOMAIN-SUFFIX,hsbcnet.com
+
+# BOC（中银）
+DOMAIN-SUFFIX,boc.cn
+DOMAIN-SUFFIX,boc.com
+DOMAIN-SUFFIX,boc.hk
+
+# ZA Bank（众安）
+DOMAIN-SUFFIX,za.bank
+DOMAIN-SUFFIX,za.group
+
+# Airstar Bank（天星）
+DOMAIN-SUFFIX,airstarbank.com
+
+# ========================
+# 💰 金融科技 / 支付
+# ========================
+# Ant / Alipay（仅核心域）
+DOMAIN-SUFFIX,alipay.com
+DOMAIN-SUFFIX,antgroup.com
+DOMAIN-SUFFIX,antfin.com
+
+# Wise
+DOMAIN-SUFFIX,wise.com
+DOMAIN-SUFFIX,transferwise.com
+DOMAIN-SUFFIX,wise.tech
+
+# iFAST
+DOMAIN-SUFFIX,ifastcorp.com
+DOMAIN-SUFFIX,ifastgb.com
+
+# Panda Remit
+DOMAIN-SUFFIX,pandaremit.com
+
+# ========================
+# 🔐 金融认证 / 登录（谨慎直连）
+# ========================
+# ⚠️ 只保留关键登录系统（避免 CDN）
+DOMAIN-SUFFIX,okta.com
+
+# ========================
+# 💳 支付网络（仅必要域）
+# ========================
+DOMAIN-SUFFIX,visa.com
+DOMAIN-SUFFIX,mastercard.com
