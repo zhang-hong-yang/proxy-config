@@ -1,0 +1,9 @@
+# 规则名称:ibkr
+
+DOMAIN-SUFFIX,interactivebrokers.com
+DOMAIN-SUFFIX,ibkr.com
+DOMAIN-SUFFIX,ibkr.com.cn    
+DOMAIN-SUFFIX,ibllc.com
+DOMAIN-SUFFIX,ibkrinfo.com
+DOMAIN-SUFFIX,ibkrguides.com
+DOMAIN-SUFFIX,ibkrstatus.com
