@@ -1,9 +1,18 @@
 # 规则名称:ibkr
 
-DOMAIN-SUFFIX,interactivebrokers.com
-DOMAIN-SUFFIX,ibkr.com
-DOMAIN-SUFFIX,ibkr.com.cn    
-DOMAIN-SUFFIX,ibllc.com
-DOMAIN-SUFFIX,ibkrinfo.com
-DOMAIN-SUFFIX,ibkrguides.com
-DOMAIN-SUFFIX,ibkrstatus.com
+DOMAIN-SUFFIX,interactivebrokers.com,DIRECT
+DOMAIN-SUFFIX,ibkr.com,DIRECT
+DOMAIN-SUFFIX,ibtws.com,DIRECT
+DOMAIN-SUFFIX,ibllc.com,DIRECT
+DOMAIN-SUFFIX,ibkr.info,DIRECT
+DOMAIN-SUFFIX,ibkr.com.cn,DIRECT
+DOMAIN-SUFFIX,ibllc.com.cn,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.com.hk,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.co.uk,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.ie,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.co.jp,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.com.sg,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.ca,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.com.au,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.eu,DIRECT
+DOMAIN-SUFFIX,interactivebrokers.hu,DIRECT
