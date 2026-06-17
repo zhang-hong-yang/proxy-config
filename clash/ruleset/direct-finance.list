@@ -43,6 +43,26 @@ DOMAIN-SUFFIX,ifastgb.com
 # Panda Remit
 DOMAIN-SUFFIX,pandaremit.com
 
+# 致富证券
+# 致富证券 - Chief App 后端
+DOMAIN-SUFFIX,chiefgroup.com.hk
+DOMAIN-SUFFIX,cm-chiefgroup.com
+DOMAIN-SUFFIX,chieftrader1979.com
+DOMAIN-SUFFIX,toptrader1979.com
+DOMAIN-SUFFIX,cg1979.com
+DOMAIN-SUFFIX,zft2000.com
+DOMAIN-SUFFIX,zft2025.com
+DOMAIN-SUFFIX,chieftrade.com
+
+# 致富证券 - 官网文档 / 静态文件
+DOMAIN-SUFFIX,chief-website.oss-cn-hongkong.aliyuncs.com
+
+# 致富证券 - 第三方推送 / 统计 / APM，建议可选
+DOMAIN-SUFFIX,volces.com
+DOMAIN-SUFFIX,volccdn.com
+DOMAIN-SUFFIX,engagelab.com
+
+
 # ========================
 # 🔐 金融认证 / 登录（谨慎直连）
 # ========================
