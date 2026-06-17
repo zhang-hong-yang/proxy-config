@@ -44,6 +44,9 @@ dns:
 # 代理节点
 # ======================
 proxies:
+  - name: '🇺🇸US vmRack-Reality_Vision'
+    type: vless
+
 # ======================
 # 代理组
 # ======================
@@ -111,41 +114,13 @@ rule-providers:
     url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/direct-finance.list"
     path: ./ruleset/direct-finance.txt
     interval: 86400
-  # 券商
-  ibkr:
+  # 金融代理
+  proxy-hk-finace:
     type: http
     behavior: classical
     format: text
-    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/ibkr.list"
-    path: ./ruleset/ibkr.txt
-    interval: 86400
-  schwab:
-    type: http
-    behavior: classical
-    format: text
-    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/schwab.list"
-    path: ./ruleset/schwab.txt
-    interval: 86400
-  futu:
-    type: http
-    behavior: classical
-    format: text
-    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/futu.list"
-    path: ./ruleset/futu.txt
-    interval: 86400
-  longbridge:
-    type: http
-    behavior: classical
-    format: text
-    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/longbridge.list"
-    path: ./ruleset/longbridge.txt
-    interval: 86400
-  itiger:
-    type: http
-    behavior: classical
-    format: text
-    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/itiger.list"
-    path: ./ruleset/itiger.txt
+    url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/proxy-hk-finace.list"
+    path: ./ruleset/proxy-hk-finace.txt
     interval: 86400
   # 屏蔽更新
   custom-reject:
@@ -252,22 +227,13 @@ rule-providers:
 # ======================
 rules:
   # ========================
-  # 🏦 银行 / 传统金融（主站 + 登录）
+  # 🏦 银行 / 传统金融（主站 + 登录） / 券商 / 投资平台（核心交易域）
   # ========================
   - RULE-SET,direct-finance,💰金融直连
- 
-  # ========================
-  # 📈 券商 / 投资平台（核心交易域）
-  # ========================
   
-  # Interactive Brokers（IBKR）
-  - RULE-SET,ibkr,💰金融直连
-  # Charles Schwab（嘉信）
-  - RULE-SET,schwab,💰金融直连
-  # 香港券商
-  - RULE-SET,futu,📈 🇭🇰券商
-  - RULE-SET,longbridge,📈 🇭🇰券商
-  - RULE-SET,itiger,📈 🇭🇰券商
+  # HK代理券商
+  - RULE-SET,proxy-hk-finace,📈 🇭🇰券商
+  
   # 屏蔽更新
   - RULE-SET,custom-reject,🚫屏蔽更新
   
