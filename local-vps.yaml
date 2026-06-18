@@ -51,7 +51,7 @@ proxies:
 # 代理组
 # ======================
 proxy-groups:
-  - name: 🚀 节点选择
+  - name: 🚀节点选择
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
@@ -59,7 +59,7 @@ proxy-groups:
       - 🇺🇸US RankNerd 01
       - DIRECT
       
-  - name: 📈 🇭🇰券商
+  - name: 📈🇭🇰券商
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
@@ -67,14 +67,14 @@ proxy-groups:
       - 🇺🇸US RankNerd 01
       - DIRECT
 
-  - name: 🤖 AI
+  - name: 🤖AI
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
       
-  - name: 🌍 国外流量
+  - name: 🌍国外流量
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
@@ -87,7 +87,7 @@ proxy-groups:
     proxies:
       - DIRECT
 
-  - name: 🍎 Apple
+  - name: 🍎Apple
     type: select
     proxies:
       - DIRECT
@@ -104,7 +104,7 @@ proxy-groups:
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
 
-  - name: 🧱 广告拦截
+  - name: 🧱广告拦截
     type: select
     proxies:
       - REJECT
@@ -251,11 +251,11 @@ rules:
   # ========================
   - RULE-SET,direct-finance,💰金融直连
   # 代理券商
-  - RULE-SET,proxy-hk-finace,📈 🇭🇰券商
+  - RULE-SET,proxy-hk-finace,📈🇭🇰券商
   # 屏蔽更新
   - RULE-SET,custom-reject,🚫屏蔽更新
   # 海外AI
-  - RULE-SET,overseas-ai,🤖 AI
+  - RULE-SET,overseas-ai,🤖AI
   
   - 'GEOSITE,private,DIRECT'
   - 'IP-CIDR,127.0.0.0/8,DIRECT,no-resolve'
@@ -318,34 +318,34 @@ rules:
   - 'DOMAIN-SUFFIX,gdt.qq.com,REJECT'
   - 'DOMAIN-SUFFIX,pgdt.gtimg.cn,REJECT'
   - 'DOMAIN-SUFFIX,adsmind.gdtimg.com,REJECT'
-  - 'DOMAIN-SUFFIX,googleapis.cn,🚀 节点选择'
-  - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择'
-  - 'DOMAIN-SUFFIX,ggpht.com,🚀 节点选择'
-  - 'DOMAIN-SUFFIX,googleusercontent.com,🚀 节点选择'
-  - 'DOMAIN-SUFFIX,gstatic.com,🚀 节点选择'
-  - 'GEOSITE,google,🚀 节点选择'
-  - 'GEOSITE,telegram,🚀 节点选择'
-  - 'GEOSITE,twitter,🚀 节点选择'
-  - 'GEOSITE,facebook,🚀 节点选择'
-  - 'GEOSITE,github,🚀 节点选择'
+  - 'DOMAIN-SUFFIX,googleapis.cn,🚀节点选择'
+  - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀节点选择'
+  - 'DOMAIN-SUFFIX,ggpht.com,🚀节点选择'
+  - 'DOMAIN-SUFFIX,googleusercontent.com,🚀节点选择'
+  - 'DOMAIN-SUFFIX,gstatic.com,🚀节点选择'
+  - 'GEOSITE,google,🚀节点选择'
+  - 'GEOSITE,telegram,🚀节点选择'
+  - 'GEOSITE,twitter,🚀节点选择'
+  - 'GEOSITE,facebook,🚀节点选择'
+  - 'GEOSITE,github,🚀节点选择'
   - 'GEOSITE,cn,DIRECT'
   - 'GEOSITE,geolocation-cn,DIRECT'
-  - 'GEOSITE,geolocation-!cn,🚀 节点选择'
+  - 'GEOSITE,geolocation-!cn,🚀节点选择'
   - 'GEOIP,CN,DIRECT,no-resolve'
 
   # 其他规则
-  - RULE-SET,reject,🧱 广告拦截
+  - RULE-SET,reject,🧱广告拦截
   - RULE-SET,private,DIRECT
-  - RULE-SET,icloud,🍎 Apple
-  - RULE-SET,apple,🍎 Apple
-  - RULE-SET,google,🌍 国外流量
-  - RULE-SET,telegramcidr,🌍 国外流量
-  - RULE-SET,gfw,🌍 国外流量
-  - RULE-SET,tld-not-cn,🌍 国外流量
-  - RULE-SET,proxy,🌍 国外流量
+  - RULE-SET,icloud,🍎Apple
+  - RULE-SET,apple,🍎Apple
+  - RULE-SET,google,🌍国外流量
+  - RULE-SET,telegramcidr,🌍国外流量
+  - RULE-SET,gfw,🌍国外流量
+  - RULE-SET,tld-not-cn,🌍国外流量
+  - RULE-SET,proxy,🌍国外流量
   - RULE-SET,direct,DIRECT
   - RULE-SET,cncidr,DIRECT
   - RULE-SET,lancidr,DIRECT
-  - RULE-SET,applications,🌍 国外流量
+  - RULE-SET,applications,🌍国外流量
 
-  - 'MATCH,🚀 节点选择'
+  - 'MATCH,🚀节点选择'
