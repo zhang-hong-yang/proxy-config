@@ -67,6 +67,13 @@ proxy-groups:
       - 🇺🇸US RankNerd 01
       - DIRECT
 
+  - name: 🤖 AI
+    type: select
+    proxies:
+      - 🇺🇸US vmRack-Reality_Vision
+      - 🇺🇸US vmRack-TLS_Vision
+      - 🇺🇸US RankNerd 01
+      
   - name: 🌍 国外流量
     type: select
     proxies:
@@ -74,18 +81,24 @@ proxy-groups:
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
       
-  - name: 🚫屏蔽更新
+
+  - name: 💰金融直连
     type: select
     proxies:
-      - REJECT
+      - DIRECT
+
+  - name: 🍎 Apple
+    type: select
+    proxies:
       - DIRECT
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
-      
-  - name: 🍎 Apple
+
+  - name: 🚫屏蔽更新
     type: select
     proxies:
+      - REJECT
       - DIRECT
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
@@ -97,10 +110,7 @@ proxy-groups:
       - REJECT
       - DIRECT
 
-  - name: 💰金融直连
-    type: select
-    proxies:
-      - DIRECT
+
 
 # ======================
 # Rule Providers
@@ -130,7 +140,15 @@ rule-providers:
     url: "https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/refs/heads/main/clash/ruleset/custom-reject.list"
     path: ./ruleset/custom-reject.txt
     interval: 86400
-  
+  # 海外AI
+  overseas-ai: 
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/viewer12/OverseasAI.list/main/rule/Clash/OverseasAI/OverseasAI.list"
+    path: ./ruleset/overseas-ai.list
+    interval: 86400
+    format: text 
+
   reject:
     type: http
     behavior: domain
@@ -226,18 +244,19 @@ rule-providers:
 # 规则
 # ======================
 rules:
+  - 'DOMAIN,skymesh.life,DIRECT'
+  
   # ========================
   # 🏦 银行 / 传统金融（主站 + 登录） / 券商 / 投资平台（核心交易域）
   # ========================
   - RULE-SET,direct-finance,💰金融直连
-  
-  # HK代理券商
+  # 代理券商
   - RULE-SET,proxy-hk-finace,📈 🇭🇰券商
-  
   # 屏蔽更新
   - RULE-SET,custom-reject,🚫屏蔽更新
+  # 海外AI
+  - RULE-SET,overseas-ai,🤖 AI
   
-  - 'DOMAIN,feed1.chitanda-eru.com,DIRECT'
   - 'GEOSITE,private,DIRECT'
   - 'IP-CIDR,127.0.0.0/8,DIRECT,no-resolve'
   - 'IP-CIDR,10.0.0.0/8,DIRECT,no-resolve'
