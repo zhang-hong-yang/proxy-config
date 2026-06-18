@@ -44,25 +44,28 @@ DOMAIN-SUFFIX,ifastgb.com
 DOMAIN-SUFFIX,pandaremit.com
 
 # 规则名称:ibkr
-
-DOMAIN-SUFFIX,interactivebrokers.com
-DOMAIN-SUFFIX,ibkr.com
-DOMAIN-SUFFIX,ibtws.com
-DOMAIN-SUFFIX,ibllc.com
-DOMAIN-SUFFIX,ibkr.info
+# ===== IBKR DIRECT =====
 DOMAIN-SUFFIX,ibkr.com.cn
 DOMAIN-SUFFIX,ibllc.com.cn
+
+# ===== IBKR =====
+DOMAIN-SUFFIX,ibkr.com
+DOMAIN-SUFFIX,ibllc.com
+DOMAIN-SUFFIX,ibkr.com.hk
+DOMAIN-SUFFIX,ibkr.com.au
+DOMAIN-SUFFIX,ibcdn.com
+DOMAIN-SUFFIX,iblink.com
+DOMAIN-SUFFIX,interactivebrokers.com
 DOMAIN-SUFFIX,interactivebrokers.com.hk
-DOMAIN-SUFFIX,interactivebrokers.co.uk
-DOMAIN-SUFFIX,interactivebrokers.ie
-DOMAIN-SUFFIX,interactivebrokers.co.jp
-DOMAIN-SUFFIX,interactivebrokers.com.sg
 DOMAIN-SUFFIX,interactivebrokers.ca
+DOMAIN-SUFFIX,interactivebrokers.ie
+DOMAIN-SUFFIX,interactivebrokers.co.uk
+DOMAIN-SUFFIX,interactivebrokers.co.in
+DOMAIN-SUFFIX,interactivebrokers.co.in
+DOMAIN-SUFFIX,interactivebrokers.com.sg
 DOMAIN-SUFFIX,interactivebrokers.com.au
-DOMAIN-SUFFIX,interactivebrokers.eu
-DOMAIN-SUFFIX,interactivebrokers.hu
-DOMAIN-SUFFIX,ibkrguides.com
-DOMAIN-SUFFIX,ibkrstatus.com
+DOMAIN-SUFFIX,ndcdyn.interactivebrokers.com
+DOMAIN-SUFFIX,cdcdyn.interactivebrokers.com
 
 # 规则名称:schwab
 
@@ -71,6 +74,12 @@ DOMAIN-SUFFIX,schwabcdn.com
 DOMAIN-SUFFIX,schwabapi.com
 DOMAIN-SUFFIX,schwabassetmanagement.com
 DOMAIN-SUFFIX,schwabinternational.com
+
+# ===== TOS =====
+DOMAIN-SUFFIX,thinkorswim.com
+DOMAIN-SUFFIX,tdameritrade.com
+DOMAIN-SUFFIX,schwab.com
+HOST,tosmediaserver.schwab.com
 
 # 致富证券
 # 致富证券 - Chief App 后端
