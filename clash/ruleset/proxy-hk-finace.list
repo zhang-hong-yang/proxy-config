@@ -1,3 +1,6 @@
+# NAME: HKBroker
+# DESC: HK/US broker services for Futu, Moomoo, Longbridge, and Tiger Brokers
+
 # Futu - core domains
 
 DOMAIN-SUFFIX,futu.link
