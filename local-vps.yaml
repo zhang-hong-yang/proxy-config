@@ -257,6 +257,10 @@ rules:
   # 如果你希望包含子域名，用 DOMAIN-SUFFIX
   # - "DOMAIN-SUFFIX,skymesh.life,DIRECT"
   # - "DOMAIN-SUFFIX,aisaka-taiga.com,DIRECT"
+  # EasyTier
+  #- "IP-CIDR,23.134.x.x/32,DIRECT,no-resolve"   # EasyTier TW VPS 公网 IP
+  - "IP-CIDR,10.77.0.0/24,DIRECT,no-resolve"       # EasyTier TW 虚拟局域网
+  - "IP-CIDR,10.66.0.0/24,DIRECT,no-resolve"       # EasyTier 另一个虚拟局域网
 
   # ========================
   # 2. 局域网 / 私有地址优先直连
