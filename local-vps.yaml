@@ -258,7 +258,10 @@ rules:
   # - "DOMAIN-SUFFIX,skymesh.life,DIRECT"
   # - "DOMAIN-SUFFIX,aisaka-taiga.com,DIRECT"
   # EasyTier
-  #- "IP-CIDR,23.134.x.x/32,DIRECT,no-resolve"   # EasyTier TW VPS 公网 IP
+  #- "IP-CIDR,23.134.212.11/32,DIRECT,no-resolve"  # 只匹配单个 IP
+  #- "IP-CIDR,23.134.0.0/16,DIRECT,no-resolve"     # 匹配 23.134.*.*
+  - "IP-CIDR,23.134.212.0/24,DIRECT,no-resolve" # 匹配 23.134.212.* 整个网段 # EasyTier TW VPS 公网 IP
+  
   - "IP-CIDR,10.77.0.0/24,DIRECT,no-resolve"       # EasyTier TW 虚拟局域网
   - "IP-CIDR,10.66.0.0/24,DIRECT,no-resolve"       # EasyTier 另一个虚拟局域网
 
