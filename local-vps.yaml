@@ -242,110 +242,134 @@ rule-providers:
 
 # ======================
 # 规则
+# GEOIP / IP-CIDR 等「目标 IP 规则」需要真实目标 IP 才能匹配。
+# 逻辑目标是域名且尚无可用 IP 时，默认会触发解析（fake-ip 下常复用 DNS 阶段结果）；加 no-resolve 则本条不为匹配而解析。
+# 若更早的规则已解析出 「域名对应的IP」，带 no-resolve 的 IP 规则仍可用该「域名对应的IP」 匹配；否则跳过本条，继续下一条。
 # ======================
 rules:
-  - 'DOMAIN,skymesh.life,DIRECT'
-  
   # ========================
-  # 🏦 银行 / 传统金融（主站 + 登录） / 券商 / 投资平台（核心交易域）
+  # 1. 自定义强制直连
+  # ========================
+  - "DOMAIN,skymesh.life,DIRECT"
+  - "DOMAIN,kaze1.aisaka-taiga.com,DIRECT"
+  - "DOMAIN-SUFFIX,shlii.io,🚀节点选择"
+
+  # 如果你希望包含子域名，用 DOMAIN-SUFFIX
+  # - "DOMAIN-SUFFIX,skymesh.life,DIRECT"
+  # - "DOMAIN-SUFFIX,aisaka-taiga.com,DIRECT"
+  # EasyTier
+  #- "IP-CIDR,23.134.212.11/32,DIRECT,no-resolve"  # 只匹配单个 IP
+  #- "IP-CIDR,23.134.0.0/16,DIRECT,no-resolve"     # 匹配 23.134.*.*
+  - "IP-CIDR,23.134.212.0/24,DIRECT,no-resolve" # 匹配 23.134.212.* 整个网段 # EasyTier TW VPS 公网 IP
+  
+  - "IP-CIDR,10.77.0.0/24,DIRECT,no-resolve"       # EasyTier TW 虚拟局域网
+  - "IP-CIDR,10.66.0.0/24,DIRECT,no-resolve"       # EasyTier 另一个虚拟局域网
+
+  # ========================
+  # 2. 局域网 / 私有地址优先直连
+  # ========================
+  - "GEOSITE,private,DIRECT"
+  - "IP-CIDR,127.0.0.0/8,DIRECT,no-resolve"
+  - "IP-CIDR,10.0.0.0/8,DIRECT,no-resolve"
+  - "IP-CIDR,172.16.0.0/12,DIRECT,no-resolve"
+  - "IP-CIDR,192.168.0.0/16,DIRECT,no-resolve"
+  - "IP-CIDR,100.64.0.0/10,DIRECT,no-resolve"
+  - "IP-CIDR,169.254.0.0/16,DIRECT,no-resolve"
+  - "IP-CIDR6,::1/128,DIRECT,no-resolve"
+  - "IP-CIDR6,fc00::/7,DIRECT,no-resolve"
+  - "IP-CIDR6,fe80::/10,DIRECT,no-resolve"
+
+  # ========================
+  # 3. 金融 / 银行 / 券商
   # ========================
   - RULE-SET,direct-finance,💰金融直连
-  # 代理券商
   - RULE-SET,proxy-hk-finace,📈🇭🇰券商
-  # 屏蔽更新
-  - RULE-SET,custom-reject,🚫屏蔽更新
-  # 海外AI
-  - RULE-SET,overseas-ai,🤖AI
-  
-  - 'GEOSITE,private,DIRECT'
-  - 'IP-CIDR,127.0.0.0/8,DIRECT,no-resolve'
-  - 'IP-CIDR,10.0.0.0/8,DIRECT,no-resolve'
-  - 'IP-CIDR,172.16.0.0/12,DIRECT,no-resolve'
-  - 'IP-CIDR,192.168.0.0/16,DIRECT,no-resolve'
-  - 'IP-CIDR,100.64.0.0/10,DIRECT,no-resolve'
-  - 'IP-CIDR,169.254.0.0/16,DIRECT,no-resolve'
-  - 'IP-CIDR6,::1/128,DIRECT,no-resolve'
-  - 'IP-CIDR6,fc00::/7,DIRECT,no-resolve'
-  - 'IP-CIDR6,fe80::/10,DIRECT,no-resolve'
-  - 'DST-PORT,3478,REJECT'
-  - 'DST-PORT,3479,REJECT'
-  - 'DST-PORT,5349,REJECT'
-  - 'DST-PORT,5350,REJECT'
-  - 'DST-PORT,19302,REJECT'
-  - 'DST-PORT,19303,REJECT'
-  - 'DST-PORT,19304,REJECT'
-  - 'DST-PORT,19305,REJECT'
-  - 'DST-PORT,19306,REJECT'
-  - 'DST-PORT,19307,REJECT'
-  - 'DST-PORT,19308,REJECT'
-  - 'DST-PORT,19309,REJECT'
-  - 'DOMAIN-SUFFIX,stun.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun.miwifi.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun.l.google.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun1.l.google.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun2.l.google.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun3.l.google.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun4.l.google.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun.services.mozilla.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun.cloudflare.com,REJECT'
-  - 'DOMAIN-SUFFIX,turn.speed.cloudflare.com,REJECT'
-  - 'DOMAIN-SUFFIX,global.turn.twilio.com,REJECT'
-  - 'DOMAIN-SUFFIX,turn.twilio.com,REJECT'
-  - 'DOMAIN-SUFFIX,stun.stunprotocol.org,REJECT'
-  - 'DOMAIN-SUFFIX,stun.ekiga.net,REJECT'
-  - 'DOMAIN-SUFFIX,stun.nextcloud.com,REJECT'
-  - 'DOMAIN-SUFFIX,relay.metered.ca,REJECT'
-  - 'DOMAIN-SUFFIX,openrelay.metered.ca,REJECT'
-  - 'DOMAIN-SUFFIX,xirsys.com,REJECT'
-  - 'DOMAIN-SUFFIX,freestun.net,REJECT'
-  - 'DOMAIN-SUFFIX,freeturn.net,REJECT'
-  - 'DOMAIN-SUFFIX,turnix.io,REJECT'
-  - 'GEOSITE,category-ads-all,REJECT'
-  - 'DOMAIN-SUFFIX,trace.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,beacon.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,report.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,pingtas.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,pingtcss.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,stats.g.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,isdspeed.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,tp.linksgo.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,webpush.wx.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,mi.gdt.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,t.gdt.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,e.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,l.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,btrace.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,gdt.qq.com,REJECT'
-  - 'DOMAIN-SUFFIX,pgdt.gtimg.cn,REJECT'
-  - 'DOMAIN-SUFFIX,adsmind.gdtimg.com,REJECT'
-  - 'DOMAIN-SUFFIX,googleapis.cn,🚀节点选择'
-  - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀节点选择'
-  - 'DOMAIN-SUFFIX,ggpht.com,🚀节点选择'
-  - 'DOMAIN-SUFFIX,googleusercontent.com,🚀节点选择'
-  - 'DOMAIN-SUFFIX,gstatic.com,🚀节点选择'
-  - 'GEOSITE,google,🚀节点选择'
-  - 'GEOSITE,telegram,🚀节点选择'
-  - 'GEOSITE,twitter,🚀节点选择'
-  - 'GEOSITE,facebook,🚀节点选择'
-  - 'GEOSITE,github,🚀节点选择'
-  - 'GEOSITE,cn,DIRECT'
-  - 'GEOSITE,geolocation-cn,DIRECT'
-  - 'GEOSITE,geolocation-!cn,🚀节点选择'
-  - 'GEOIP,CN,DIRECT,no-resolve'
 
-  # 其他规则
+  # ========================
+  # 4. 屏蔽规则 / STUN / 广告
+  # ========================
+  - RULE-SET,custom-reject,🚫屏蔽更新
+
+  - "DST-PORT,3478,REJECT"
+  - "DST-PORT,3479,REJECT"
+  - "DST-PORT,5349,REJECT"
+  - "DST-PORT,5350,REJECT"
+  - "DST-PORT,19302,REJECT"
+  - "DST-PORT,19303,REJECT"
+  - "DST-PORT,19304,REJECT"
+  - "DST-PORT,19305,REJECT"
+  - "DST-PORT,19306,REJECT"
+  - "DST-PORT,19307,REJECT"
+  - "DST-PORT,19308,REJECT"
+  - "DST-PORT,19309,REJECT"
+
+  - "DOMAIN-SUFFIX,stun.qq.com,REJECT"
+  - "DOMAIN-SUFFIX,stun.miwifi.com,REJECT"
+  - "DOMAIN-SUFFIX,stun.l.google.com,REJECT"
+  - "DOMAIN-SUFFIX,stun1.l.google.com,REJECT"
+  - "DOMAIN-SUFFIX,stun2.l.google.com,REJECT"
+  - "DOMAIN-SUFFIX,stun3.l.google.com,REJECT"
+  - "DOMAIN-SUFFIX,stun4.l.google.com,REJECT"
+  - "DOMAIN-SUFFIX,stun.services.mozilla.com,REJECT"
+  - "DOMAIN-SUFFIX,stun.cloudflare.com,REJECT"
+  - "DOMAIN-SUFFIX,turn.speed.cloudflare.com,REJECT"
+  - "DOMAIN-SUFFIX,global.turn.twilio.com,REJECT"
+  - "DOMAIN-SUFFIX,turn.twilio.com,REJECT"
+
+  - "GEOSITE,category-ads-all,REJECT"
   - RULE-SET,reject,🧱广告拦截
-  - RULE-SET,private,DIRECT
+
+  # ========================
+  # 5. 海外 AI
+  # ========================
+  - RULE-SET,overseas-ai,🤖AI
+
+  # ========================
+  # 6. Apple
+  # ========================
   - RULE-SET,icloud,🍎Apple
   - RULE-SET,apple,🍎Apple
+
+  # ========================
+  # 7. 明确指定代理的海外服务
+  # ========================
+  - "DOMAIN-SUFFIX,googleapis.cn,🚀节点选择"
+  - "DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀节点选择"
+  - "DOMAIN-SUFFIX,ggpht.com,🚀节点选择"
+  - "DOMAIN-SUFFIX,googleusercontent.com,🚀节点选择"
+  - "DOMAIN-SUFFIX,gstatic.com,🚀节点选择"
+
+  - "GEOSITE,google,🚀节点选择"
+  - "GEOSITE,telegram,🚀节点选择"
+  - "GEOSITE,twitter,🚀节点选择"
+  - "GEOSITE,facebook,🚀节点选择"
+  - "GEOSITE,github,🚀节点选择"
+
   - RULE-SET,google,🌍国外流量
   - RULE-SET,telegramcidr,🌍国外流量
   - RULE-SET,gfw,🌍国外流量
   - RULE-SET,tld-not-cn,🌍国外流量
   - RULE-SET,proxy,🌍国外流量
+  - RULE-SET,applications,🌍国外流量
+
+  # ========================
+  # 8. 国内直连
+  # ========================
+  - "GEOSITE,cn,DIRECT"
+  - "GEOSITE,geolocation-cn,DIRECT"
   - RULE-SET,direct,DIRECT
   - RULE-SET,cncidr,DIRECT
   - RULE-SET,lancidr,DIRECT
-  - RULE-SET,applications,🌍国外流量
 
-  - 'MATCH,🚀节点选择'
+  # ========================
+  # 9. 非中国兜底代理
+  # ========================
+  - "GEOSITE,geolocation-!cn,🚀节点选择"
+
+  # 国内 IP 兜底直连
+  - "GEOIP,CN,DIRECT,no-resolve"
+
+  # ========================
+  # 10. 最终兜底
+  # ========================
+  - "MATCH,🚀节点选择"
