@@ -1,11 +1,11 @@
 mixed-port: 7890
 allow-lan: true
-bind-address: '*'
+bind-address: "*"
 mode: rule
 log-level: info
 ipv6: true
 prefer-ipv6: true
-external-controller: '127.0.0.1:9090'
+external-controller: "127.0.0.1:9090"
 find-process-mode: strict
 unified-delay: true
 tcp-concurrent: true
@@ -13,39 +13,75 @@ geodata-mode: true
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-    geoip: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat'
-    geosite: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat'
-    mmdb: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb'
-    asn: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb'
-    metadb: 'https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb'
+  geoip: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+  metadb: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb"
 keep-alive-interval: 30
 keep-alive-idle: 120
 profile:
-    store-selected: true
-    store-fake-ip: true
+  store-selected: true
+  store-fake-ip: true
 sniffer:
-    enable: true
-    force-dns-mapping: true
-    parse-pure-ip: true
-    override-destination: true
-    sniff: { HTTP: { ports: [80, 8080-8880], override-destination: true }, TLS: { ports: [443, 8443] }, QUIC: { ports: [443, 8443] } }
-    skip-domain: ['Mijia Cloud', +.push.apple.com]
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    {
+      HTTP: { ports: [80, 8080-8880], override-destination: true },
+      TLS: { ports: [443, 8443] },
+      QUIC: { ports: [443, 8443] },
+    }
+  skip-domain: ["Mijia Cloud", +.push.apple.com]
 dns:
-    enable: true
-    prefer-h3: true
-    enhanced-mode: fake-ip
-    fake-ip-range: 198.18.0.1/16
-    default-nameserver: [223.5.5.5, 119.29.29.29]
-    nameserver: ['https://dns.cloudflare.com/dns-query', 'https://dns.google/dns-query']
-    proxy-server-nameserver: ['https://dns.alidns.com/dns-query']
-    nameserver-policy: { 'geosite:cn,geolocation-cn': ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query'] }
-    fake-ip-filter: ['*.lan', '*.local', '*.direct', '*.localhost', 'time.*.com', 'ntp.*.com', 'time.*.gov', 'time.*.apple.com', time.windows.com, time.nist.gov, '*.msftconnecttest.com', '*.msftncsi.com', localhost.ptlogin2.qq.com, '*.cmpassport.com', '*.mcdn.bilivideo.cn', '*.battlenet.com.cn', +.wotgame.cn, +.wggames.cn, +.wowsgame.cn, id6.me, lens.l.google.com, captive.apple.com, connectivitycheck.gstatic.com]
+  enable: true
+  prefer-h3: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver:
+    ["https://dns.cloudflare.com/dns-query", "https://dns.google/dns-query"]
+  proxy-server-nameserver: ["https://dns.alidns.com/dns-query"]
+  nameserver-policy:
+    {
+      "geosite:cn,geolocation-cn":
+        ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"],
+    }
+  fake-ip-filter:
+    [
+      "*.lan",
+      "*.local",
+      "*.direct",
+      "*.localhost",
+      "time.*.com",
+      "ntp.*.com",
+      "time.*.gov",
+      "time.*.apple.com",
+      time.windows.com,
+      time.nist.gov,
+      "*.msftconnecttest.com",
+      "*.msftncsi.com",
+      localhost.ptlogin2.qq.com,
+      "*.cmpassport.com",
+      "*.mcdn.bilivideo.cn",
+      "*.battlenet.com.cn",
+      +.wotgame.cn,
+      +.wggames.cn,
+      +.wowsgame.cn,
+      id6.me,
+      lens.l.google.com,
+      captive.apple.com,
+      connectivitycheck.gstatic.com,
+    ]
 # ======================
 # 代理节点
 # ======================
 proxies:
-  - name: '🇺🇸US vmRack-Reality_Vision'
+  - name: "🇺🇸US vmRack-Reality_Vision"
     type: vless
+    
 
 # ======================
 # 代理组
@@ -57,14 +93,16 @@ proxy-groups:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
+      - "tw VLESS-REALITY-11"
       - DIRECT
-      
+
   - name: 📈🇭🇰券商
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
+      - "tw VLESS-REALITY-11"
       - DIRECT
 
   - name: 🤖AI
@@ -73,14 +111,15 @@ proxy-groups:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
-      
+      - "tw VLESS-REALITY-11"
+
   - name: 🌍国外流量
     type: select
     proxies:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
-      
+      - "tw VLESS-REALITY-11"
 
   - name: 💰金融直连
     type: select
@@ -94,6 +133,7 @@ proxy-groups:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
+      - "tw VLESS-REALITY-11"
 
   - name: 🚫屏蔽更新
     type: select
@@ -103,14 +143,13 @@ proxy-groups:
       - 🇺🇸US vmRack-Reality_Vision
       - 🇺🇸US vmRack-TLS_Vision
       - 🇺🇸US RankNerd 01
+      - "tw VLESS-REALITY-11"
 
   - name: 🧱广告拦截
     type: select
     proxies:
       - REJECT
       - DIRECT
-
-
 
 # ======================
 # Rule Providers
@@ -141,13 +180,13 @@ rule-providers:
     path: ./ruleset/custom-reject.txt
     interval: 86400
   # 海外AI
-  overseas-ai: 
+  overseas-ai:
     type: http
     behavior: classical
     url: "https://raw.githubusercontent.com/viewer12/OverseasAI.list/main/rule/Clash/OverseasAI/OverseasAI.list"
     path: ./ruleset/overseas-ai.list
     interval: 86400
-    format: text 
+    format: text
 
   reject:
     type: http
@@ -242,9 +281,6 @@ rule-providers:
 
 # ======================
 # 规则
-# GEOIP / IP-CIDR 等「目标 IP 规则」需要真实目标 IP 才能匹配。
-# 逻辑目标是域名且尚无可用 IP 时，默认会触发解析（fake-ip 下常复用 DNS 阶段结果）；加 no-resolve 则本条不为匹配而解析。
-# 若更早的规则已解析出 「域名对应的IP」，带 no-resolve 的 IP 规则仍可用该「域名对应的IP」 匹配；否则跳过本条，继续下一条。
 # ======================
 rules:
   # ========================
@@ -258,12 +294,13 @@ rules:
   # - "DOMAIN-SUFFIX,skymesh.life,DIRECT"
   # - "DOMAIN-SUFFIX,aisaka-taiga.com,DIRECT"
   # EasyTier
+
   #- "IP-CIDR,23.134.212.11/32,DIRECT,no-resolve"  # 只匹配单个 IP
   #- "IP-CIDR,23.134.0.0/16,DIRECT,no-resolve"     # 匹配 23.134.*.*
-  - "IP-CIDR,23.134.212.0/24,DIRECT,no-resolve" # 匹配 23.134.212.* 整个网段 # EasyTier TW VPS 公网 IP
-  
-  - "IP-CIDR,10.77.0.0/24,DIRECT,no-resolve"       # EasyTier TW 虚拟局域网
-  - "IP-CIDR,10.66.0.0/24,DIRECT,no-resolve"       # EasyTier 另一个虚拟局域网
+  #- "IP-CIDR,23.134.212.0/24,DIRECT,no-resolve" # 匹配 23.134.212.* 整个网段 # EasyTier TW VPS 公网 IP
+  - "DOMAIN-SUFFIX,410996.xyz,DIRECT"
+  - "IP-CIDR,10.77.0.0/24,DIRECT,no-resolve" # EasyTier TW 虚拟局域网
+  - "IP-CIDR,10.66.0.0/24,DIRECT,no-resolve" # EasyTier 另一个虚拟局域网
 
   # ========================
   # 2. 局域网 / 私有地址优先直连
