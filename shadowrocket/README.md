@@ -47,10 +47,18 @@ shadowrocket/local-vps.conf
 
 ## Shadowrocket 使用方法
 
-1. 将 `local-vps.conf` 发送到 iPhone，或通过可访问的 URL 导入 Shadowrocket。
+1. 将 `local-vps.conf` 发送到 iPhone，或使用下面的 Raw URL 导入 Shadowrocket：
+
+   ```text
+   https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/main/shadowrocket/local-vps.conf
+   ```
+
+   不要使用包含 `/blob/` 的 GitHub 文件浏览页面地址。
 2. 在 Shadowrocket 中添加自己的代理节点或订阅。
 3. 将生成的配置设为当前配置。
 4. 根据需要在策略组中选择 `PROXY`、`DIRECT` 或 `REJECT`。
+
+配置的 `[General]` 中已经包含同一个 Raw 地址作为 `update-url`，后续可以直接在 Shadowrocket 中更新配置。
 
 源 `local-vps.yaml` 没有完整的服务器地址、UUID 等节点参数，因此生成配置中的 `[Proxy]` 为空。`PROXY` 代表在 Shadowrocket 中另外添加的节点或订阅。
 

@@ -141,6 +141,7 @@ def render(config: dict[str, Any], source_name: str) -> str:
             "# 在 Shadowrocket 中添加节点或订阅后，PROXY 会代表可用代理节点。",
             "",
             "[General]",
+            "update-url = https://raw.githubusercontent.com/zhang-hong-yang/proxy-config/main/shadowrocket/local-vps.conf",
             "bypass-system = true",
             "skip-proxy = 192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,localhost,*.local,*.in-addr.arpa,*.ip6.arpa,captive.apple.com",
             "tun-excluded-routes = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.168.0.0/16",
